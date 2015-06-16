@@ -4,7 +4,7 @@
   "username": "manager@mediasuite.local",
   "password": "password",
   "mock": true,
-  "mockUsername": "developer",
+  "mockUsername": "mike",
   "mockUserToGroup": {
     "mike": "managers",
     "jane": "executives",
