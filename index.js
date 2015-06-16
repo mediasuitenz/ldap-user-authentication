@@ -31,6 +31,8 @@ function getUserInfo(req, res, next) {
 }
 
 module.exports = function (expressApp, config) {
+  if (!config)
+    console.error('\nldapconfig.json is missing! Please copy ldapconfig-example.json in to your server/ directory and make the appropriate changes.');
   app = expressApp;
   ldapConfig = config;
   var ldapLibrary = ldapConfig.mock ?
