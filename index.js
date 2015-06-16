@@ -1,7 +1,6 @@
 'use strict';
 
 var ldap;
-var app;
 var ldapConfig;
 
 function getUserInfo(req, res, next) {
@@ -21,19 +20,19 @@ function getUserInfo(req, res, next) {
         username + ' has not been given access to this app'
       ));
 
-    app.set('user', {
+    req.user = {
       name: username,
       group: groups[0]
-    });
+    };
 
     next();
   });
 }
 
-module.exports = function (expressApp, config) {
+module.exports = function (config) {
   if (!config)
     console.error('\nldapconfig.json is missing! Please copy ldapconfig-example.json in to your server/ directory and make the appropriate changes.');
-  app = expressApp;
+
   ldapConfig = config;
   var ldapLibrary = ldapConfig.mock ?
     require('./ldap.development') :
