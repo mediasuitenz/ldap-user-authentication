@@ -8,13 +8,11 @@
   "mockUserToGroup": {
     "mike": "managers",
     "jane": "executives",
-    "johnny": "officers",
-    "developer": "developers"
+    "johnny": "officers"
   },
   "roles": {
     "MANAGER": "managers",
     "EXEC": "executives",
-    "OFFICER": "officers",
-    "ADMIN": "developers"
+    "OFFICER": "officers"
   }
 }
