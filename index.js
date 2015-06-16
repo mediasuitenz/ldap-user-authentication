@@ -1,7 +1,6 @@
 'use strict';
 
 var ldap;
-var app;
 var ldapConfig;
 
 function getUserInfo(req, res, next) {
@@ -21,21 +20,21 @@ function getUserInfo(req, res, next) {
         username + ' has not been given access to this app'
       ));
 
-    app.set('user', {
+    req.user = {
       name: username,
       group: groups[0]
-    });
+    };
 
     next();
   });
 }
 
-module.exports = function (expressApp, config) {
-  app = expressApp;
+module.exports = function (config) {
   ldapConfig = config;
   var ldapLibrary = ldapConfig.mock ?
     require('./ldap.development') :
     require('./ldap.production');
+
   ldap = ldapLibrary(ldapConfig);
 
   return {
