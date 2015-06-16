@@ -1,0 +1,16 @@
+{
+  "name": "ldap-user-authentication",
+  "version": "0.1.0",
+  "description": "Wrapper for ActiveDirectory that gets the group for the username passed in through the x-iisnode-auth_user header",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "ActiveDirectory",
+    "Loopback",
+    "Authentication"
+  ],
+  "author": "mediasuitenz",
+  "license": "ISC"
+}

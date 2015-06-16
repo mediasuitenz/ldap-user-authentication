@@ -1,0 +1,20 @@
+{
+  "url": "ldap://mediasuite.local",
+  "baseDN": "dc=mediasuite, dc=local",
+  "username": "manager@mediasuite.local",
+  "password": "password",
+  "mock": true,
+  "mockUsername": "developer",
+  "mockUserToGroup": {
+    "mike": "managers",
+    "jane": "executives",
+    "johnny": "officers",
+    "developer": "developers"
+  },
+  "roles": {
+    "MANAGER": "managers",
+    "EXEC": "executives",
+    "OFFICER": "officers",
+    "ADMIN": "developers"
+  }
+}
