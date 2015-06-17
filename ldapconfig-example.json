@@ -5,6 +5,7 @@
   "password": "password",
   "mock": true,
   "mockUsername": "mike",
+  "allUserGroup": "mediasuite",
   "mockUserToGroup": {
     "mike": "managers",
     "jane": "executives",

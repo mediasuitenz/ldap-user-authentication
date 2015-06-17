@@ -2,6 +2,7 @@ var ActiveDirectory = require('activedirectory')
 
 var ad
 var groupNames
+var allUserGroup
 
 function getGroupNames(config) {
   return Object.key(config.roles).map(function (key) {
@@ -11,10 +12,12 @@ function getGroupNames(config) {
 
 module.exports = function (ldapConfig) {
   groupNames = getGroupNames(ldapConfig)
+  allUserGroup = ldapConfig.allUserGroup
   ad = new ActiveDirectory(ldapConfig)
 
   return {
-    getUserGroups: getUserGroups
+    getUserGroups: getUserGroups,
+    getAllUsers: getAllUsers
   }
 }
 
@@ -38,4 +41,14 @@ function getUserGroups(username, callback) {
         return false
       }))
   })
+}
+
+function getAllUsers(callback) {
+  ad.getUsersForGroup({ attributes: ['cn', 'sAMAccountName'] }, allUserGroup, remapUsers)
+
+  function remapUsers(err, data) {
+    callback(err, data.map(function (user) {
+      return { id: user.sAMAccountName, name: user.cn }
+    }))
+  }
 }
