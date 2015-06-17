@@ -26,13 +26,9 @@ module.exports = function (ldapConfig) {
  */
 function getUserGroups(username, callback) {
   ad.getGroupMembershipForUser({ attributes: ['cn'] }, username, function(err, groups) {
-    if (err)
-      return callback(err)
-
     if (!groups)
-      return callback(null, [])
-
-    callback(null, groups
+      groups = []
+    callback(err, groups
       .reduce(function(prev, group) { return prev.concat(group['cn']) }, [])
       .filter(function(groupName) {
         for (var i = 0; i < groupNames.length; i++) {
