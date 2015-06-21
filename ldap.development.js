@@ -16,8 +16,8 @@ function mockGetUserGroups(username, callback) {
 function mockGetAllUsers(callback) {
   callback(null, [
       {
-        id: 'jtaylor',
-        name: 'James Taylor'
+        id: 'taytay',
+        name: 'Taylor Swift'
       },
       {
         id: 'agrant',
