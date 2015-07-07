@@ -5,7 +5,7 @@ var groupNames
 var allUserGroup
 
 function getGroupNames(config) {
-  return Object.key(config.roles).map(function (key) {
+  return Object.keys(config.roles).map(function (key) {
     return config.roles[key];
   })
 }
