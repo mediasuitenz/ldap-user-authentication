@@ -45,7 +45,9 @@ function getUserGroups(username, callback) {
 }
 
 function getUserEmail(username, callback) {
-  ad.findUser({attributes: 'mail'}, username, callback)
+  ad.findUser(username, function(error, data) {
+    callback(error, data ? data['mail'] : null)
+  })
 }
 
 function getAllUsers(callback) {
