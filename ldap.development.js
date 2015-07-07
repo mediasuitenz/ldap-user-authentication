@@ -28,5 +28,5 @@ function mockGetAllUsers(callback) {
 }
 
 function mockGetUserEmail(username, callback) {
-  callback(null, 'test@mediasuite.co.nz')
+  callback(null, 'developers@mediasuite.co.nz')
 }
