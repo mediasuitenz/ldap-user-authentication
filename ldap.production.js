@@ -5,7 +5,7 @@ var groupNames
 var allUserGroup
 
 function getGroupNames(config) {
-  return Object.key(config.roles).map(function (key) {
+  return Object.keys(config.roles).map(function (key) {
     return config.roles[key];
   })
 }
@@ -17,7 +17,8 @@ module.exports = function (ldapConfig) {
 
   return {
     getUserGroups: getUserGroups,
-    getAllUsers: getAllUsers
+    getAllUsers: getAllUsers,
+    getUserEmail: getUserEmail
   }
 }
 
@@ -40,6 +41,12 @@ function getUserGroups(username, callback) {
         }
         return false
       }))
+  })
+}
+
+function getUserEmail(username, callback) {
+  ad.findUser(username, function(error, data) {
+    callback(error, data ? data['mail'] : null)
   })
 }
 

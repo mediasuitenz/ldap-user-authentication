@@ -5,7 +5,8 @@ module.exports = function (config) {
 
   return {
     getUserGroups: mockGetUserGroups,
-    getAllUsers: mockGetAllUsers
+    getAllUsers: mockGetAllUsers,
+    getUserEmail: mockGetUserEmail
   }
 }
 
@@ -24,4 +25,8 @@ function mockGetAllUsers(callback) {
         name: 'Alex Grant'
       }
     ])
+}
+
+function mockGetUserEmail(username, callback) {
+  callback(null, 'developers@mediasuite.co.nz')
 }
