@@ -34,12 +34,12 @@ function mockGetUserEmail(username, callback) {
 
 var users = {
   'taytay': {
-    id: 'taytay',
-    name: 'Taylor Swift'
+    sAMAccountName: 'taytay',
+    cn: 'Taylor Swift'
   },
   'agrant': {
-    id: 'agrant',
-    name: 'Alex Grant'
+    sAMAccountName: 'agrant',
+    cn: 'Alex Grant'
   }
 }
 

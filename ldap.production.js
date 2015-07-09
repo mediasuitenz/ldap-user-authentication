@@ -18,7 +18,8 @@ module.exports = function (ldapConfig) {
   return {
     getUserGroups: getUserGroups,
     getAllUsers: getAllUsers,
-    getUserEmail: getUserEmail
+    getUserEmail: getUserEmail,
+    getUser: ad.findUser
   }
 }
 
