@@ -6,7 +6,8 @@ module.exports = function (config) {
   return {
     getUserGroups: mockGetUserGroups,
     getAllUsers: mockGetAllUsers,
-    getUserEmail: mockGetUserEmail
+    getUserEmail: mockGetUserEmail,
+    getUserName: mockGetUserName
   }
 }
 
@@ -29,4 +30,19 @@ function mockGetAllUsers(callback) {
 
 function mockGetUserEmail(username, callback) {
   callback(null, 'developers@mediasuite.co.nz')
+}
+
+var users = {
+  'taytay': {
+    sAMAccountName: 'taytay',
+    cn: 'Taylor Swift'
+  },
+  'agrant': {
+    sAMAccountName: 'agrant',
+    cn: 'Alex Grant'
+  }
+}
+
+function mockGetUserName(id, callback) {
+  callback(null, users[id])
 }
