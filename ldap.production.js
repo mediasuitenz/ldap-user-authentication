@@ -55,7 +55,10 @@ function getAllUsers(callback) {
   ad.getUsersForGroup({ attributes: ['cn', 'sAMAccountName'] }, allUserGroup, remapUsers)
 
   function remapUsers(err, data) {
-    callback(err, data.map(function (user) {
+    if (err) return callback(err)
+    if (!data) return callback(null, [])
+    
+    callback(null, data.map(function (user) {
       return { id: user.sAMAccountName, name: user.cn }
     }))
   }
