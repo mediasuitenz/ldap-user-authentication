@@ -17,7 +17,7 @@ module.exports = function (ldapConfig) {
 
   return {
     getUserGroups: getUserGroups,
-    getAllUsers: getAllUsers,
+    getAllUsers: callback => ad.getUsersForGroup(allUserGroup, callback),
     getUserEmail: getUserEmail,
     getUser: ad.findUser
   }
@@ -49,17 +49,4 @@ function getUserEmail(username, callback) {
   ad.findUser(username, function(error, data) {
     callback(error, data ? data['mail'] : null)
   })
-}
-
-function getAllUsers(callback) {
-  ad.getUsersForGroup({ attributes: ['cn', 'sAMAccountName'] }, allUserGroup, remapUsers)
-
-  function remapUsers(err, data) {
-    if (err) return callback(err)
-    if (!data) return callback(null, [])
-    
-    callback(null, data.map(function (user) {
-      return { id: user.sAMAccountName, name: user.cn }
-    }))
-  }
 }
