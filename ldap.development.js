@@ -15,34 +15,27 @@ function mockGetUserGroups(username, callback) {
   callback(null, [userGroups[username]])
 }
 
+var users = [
+    {
+      sAMAccountName: 'taytay',
+      cn: 'Taylor Swift'
+    },
+    {
+      sAMAccountName: 'agrant',
+      cn: 'Alex Grant'
+    }
+]
+
 function mockGetAllUsers(callback) {
-  callback(null, [
-      {
-        id: 'taytay',
-        name: 'Taylor Swift'
-      },
-      {
-        id: 'agrant',
-        name: 'Alex Grant'
-      }
-    ])
+  callback(null, users)
 }
 
 function mockGetUserEmail(username, callback) {
   callback(null, 'developers@mediasuite.co.nz')
 }
 
-var users = {
-  'taytay': {
-    sAMAccountName: 'taytay',
-    cn: 'Taylor Swift'
-  },
-  'agrant': {
-    sAMAccountName: 'agrant',
-    cn: 'Alex Grant'
-  }
-}
+var userByName = { 'taytay': users[0], 'agrant': users[1] }
 
 function mockGetUserName(id, callback) {
-  callback(null, users[id])
+  callback(null, usersByName[id])
 }
