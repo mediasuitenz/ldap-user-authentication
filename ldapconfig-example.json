@@ -10,12 +10,12 @@
     "mike": "managers",
     "jane": "executives",
     "johnny": "officers",
-    "edward": ""
+    "edward": "mediasuite"
   },
   "roles": {
     "MANAGER": "managers",
     "EXEC": "executives",
     "OFFICER": "officers",
-    "READONLY": ""
+    "READ_ONLY_STAFF": "mediasuite"
   }
 }
