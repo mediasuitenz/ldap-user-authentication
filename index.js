@@ -22,7 +22,7 @@ function getUserInfo(req, res, next) {
 
     req.user = {
       name: username,
-      group: groups[0]
+      group: ldapConfig.roles[groups[0]]
     };
 
     next();
