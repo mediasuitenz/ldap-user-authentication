@@ -7,7 +7,8 @@ module.exports = function (config) {
     getUserGroups: mockGetUserGroups,
     getAllUsers: mockGetAllUsers,
     getUserEmail: mockGetUserEmail,
-    getUserName: mockGetUserName
+    getUser: mockGetUser,
+    getUsersForGroup: mockGetUsersForGroup
   }
 }
 
@@ -18,11 +19,13 @@ function mockGetUserGroups(username, callback) {
 var users = [
     {
       sAMAccountName: 'taytay',
-      cn: 'Taylor Swift'
+      cn: 'Taylor Swift',
+      group: 'ADMIN'
     },
     {
       sAMAccountName: 'agrant',
-      cn: 'Alex Grant'
+      cn: 'Alex Grant',
+      group: 'OFFICER'
     }
 ]
 
@@ -34,8 +37,12 @@ function mockGetUserEmail(username, callback) {
   callback(null, 'developers@mediasuite.co.nz')
 }
 
-var userByName = { 'taytay': users[0], 'agrant': users[1] }
+var usersByName = { 'taytay': users[0], 'agrant': users[1] }
 
-function mockGetUserName(id, callback) {
+function mockGetUser(id, callback) {
   callback(null, usersByName[id])
+}
+
+function mockGetUsersForGroup(group, callback) {
+  callback(null, users.filter(function(user) { return user.group === group }))
 }
