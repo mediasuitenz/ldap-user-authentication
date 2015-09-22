@@ -26,6 +26,26 @@ var users = [
       sAMAccountName: 'agrant',
       cn: 'Alex Grant',
       group: 'OFFICER'
+    },
+    {
+      sAMAccountName: 'bambam',
+      cn: 'Robert Smith',
+      group: 'MANAGER'
+    },
+    {
+      sAMAccountName: 'leroy',
+      cn: 'Leroy Jenkins',
+      group: 'MANAGER'
+    },
+    {
+      sAMAccountName: 'drseuss',
+      cn: 'Dr Seuss',
+      group: 'MANAGER'
+    },
+    {
+      sAMAccountName: 'hillaryclinton',
+      cn: 'Hillary Clinton',
+      group: 'MANAGER'
     }
 ]
 
