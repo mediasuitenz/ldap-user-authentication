@@ -46,6 +46,11 @@ var users = [
       sAMAccountName: 'hillaryclinton',
       cn: 'Hillary Clinton',
       group: 'MANAGER'
+    },
+    {
+      sAMAccountName: 'verminsupreme',
+      cn: 'Vermin Love Supreme',
+      group: 'PRESIDENT'
     }
 ]
 
@@ -57,7 +62,15 @@ function mockGetUserEmail(username, callback) {
   callback(null, 'developers@mediasuite.co.nz')
 }
 
-var usersByName = { 'taytay': users[0], 'agrant': users[1] }
+var usersByName = {
+  taytay: users[0],
+  agrant: users[1],
+  bambam: users[2],
+  leroy: users[3],
+  drseuss: users[4],
+  hillaryclinton: users[5],
+  verminsupreme: users[6]
+}
 
 function mockGetUser(id, callback) {
   callback(null, usersByName[id])
