@@ -3,6 +3,7 @@ var ActiveDirectory = require('activedirectory')
 var ad
 var groupNames
 var allUserGroup
+var managerGroup
 
 function getGroupNames(config) {
   return Object.keys(config.roles).map(function (key) {
@@ -13,13 +14,15 @@ function getGroupNames(config) {
 module.exports = function (ldapConfig) {
   groupNames = getGroupNames(ldapConfig)
   allUserGroup = ldapConfig.allUserGroup
+  managerGroup = ldapConfig.roles.MANAGER
   ad = new ActiveDirectory(ldapConfig)
 
   return {
     getUserGroups: getUserGroups,
     getAllUsers: function (callback) { ad.getUsersForGroup(allUserGroup, callback) },
     getUserEmail: getUserEmail,
-    getUser: ad.findUser
+    getUser: ad.findUser,
+    getAllManagers: function (callback) { ad.getUsersForGroup(managerGroup, callback) }
   }
 }
 

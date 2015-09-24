@@ -8,7 +8,8 @@ module.exports = function (config) {
     getAllUsers: mockGetAllUsers,
     getUserEmail: mockGetUserEmail,
     getUser: mockGetUser,
-    getUsersForGroup: mockGetUsersForGroup
+    getUsersForGroup: mockGetUsersForGroup,
+    getAllManagers: mockGetAllManagers
   }
 }
 
@@ -16,53 +17,70 @@ function mockGetUserGroups(username, callback) {
   callback(null, [userGroups[username]])
 }
 
-var users = [
+var users = {
+  administrators: [
     {
       sAMAccountName: 'taytay',
-      cn: 'Taylor Swift',
-      group: 'ADMIN'
+      cn: 'Taylor Swift'
     },
+    {
+      sAMAccountName: 'verminsupreme',
+      cn: 'Vermin Love Supreme'
+    }
+  ],
+  officers: [
     {
       sAMAccountName: 'agrant',
-      cn: 'Alex Grant',
-      group: 'OFFICER'
+      cn: 'Alex Grant'
     },
     {
+      sAMAccountName: 'hightower',
+      cn: 'High Tower'
+    }
+  ],
+  managers: [
+    {
       sAMAccountName: 'bambam',
-      cn: 'Robert Smith',
-      group: 'MANAGER'
+      cn: 'Robert Smith'
     },
     {
       sAMAccountName: 'leroy',
-      cn: 'Leroy Jenkins',
-      group: 'MANAGER'
+      cn: 'Leroy Jenkins'
     },
     {
       sAMAccountName: 'drseuss',
-      cn: 'Dr Seuss',
-      group: 'MANAGER'
+      cn: 'Dr Seuss'
     },
     {
       sAMAccountName: 'hillaryclinton',
-      cn: 'Hillary Clinton',
-      group: 'MANAGER'
+      cn: 'Hillary Clinton'
     }
-]
+  ]
+}
+
+var allUsers = users.administrators.concat(users.officers, users.managers)
 
 function mockGetAllUsers(callback) {
-  callback(null, users)
+  callback(null, allUsers)
 }
 
 function mockGetUserEmail(username, callback) {
   callback(null, 'developers@mediasuite.co.nz')
 }
 
-var usersByName = { 'taytay': users[0], 'agrant': users[1] }
+var usersByName = allUsers.reduce(function (current, user) {
+  current[user.sAMAccountName] = user
+  return current
+}, {})
 
 function mockGetUser(id, callback) {
   callback(null, usersByName[id])
 }
 
 function mockGetUsersForGroup(group, callback) {
-  callback(null, users.filter(function(user) { return user.group === group }))
+  callback(null, users[group])
+}
+
+function mockGetAllManagers(callback) {
+  callback(null, users.managers)
 }
