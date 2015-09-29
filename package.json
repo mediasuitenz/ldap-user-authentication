@@ -1,6 +1,6 @@
 {
   "name": "@mediasuite/ldap-user-authentication",
-  "version": "3.0.0",
+  "version": "3.0.1",
   "description": "Wrapper for ActiveDirectory that gets the group for the username passed in through the x-iisnode-auth_user header",
   "main": "index.js",
   "scripts": {
