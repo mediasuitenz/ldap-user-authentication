@@ -7,15 +7,17 @@
   "mockUsername": "mike",
   "allUserGroup": "mediasuite",
   "mockUserToGroup": {
-    "mike": "managers",
-    "jane": "executives",
-    "johnny": "officers",
-    "edward": "mediasuite"
+    "mike": "Con_Manager",
+    "jane": "Con_Exec",
+    "johnny": "Con_Officer",
+    "edward": "MDC-r",
+    "julie": ""
   },
   "roles": {
-    "MANAGER": "managers",
-    "EXEC": "executives",
-    "OFFICER": "officers",
-    "READ_ONLY_STAFF": "mediasuite"
+    "MANAGER": "Con_Manager",
+    "EXEC": "Con_Exec",
+    "OFFICER": "Con_Officer",
+    "READ_ONLY_STAFF": "MDC-r",
+    "DEPARTMENT_MANAGER": ""
   }
 }
