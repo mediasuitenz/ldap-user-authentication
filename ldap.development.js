@@ -1,7 +1,7 @@
-var userGroups;
+var userGroups
 
 module.exports = function (config) {
-  userGroups = config.mockUserToGroup;
+  userGroups = config.mockUserToGroup
 
   return {
     getUserGroups: mockGetUserGroups,
@@ -13,7 +13,7 @@ module.exports = function (config) {
   }
 }
 
-function mockGetUserGroups(username, callback) {
+function mockGetUserGroups (username, callback) {
   callback(null, [userGroups[username]])
 }
 
@@ -60,11 +60,11 @@ var users = {
 
 var allUsers = users.administrators.concat(users.officers, users.managers)
 
-function mockGetAllUsers(callback) {
+function mockGetAllUsers (callback) {
   callback(null, allUsers)
 }
 
-function mockGetUserEmail(username, callback) {
+function mockGetUserEmail (username, callback) {
   callback(null, 'developers@mediasuite.co.nz')
 }
 
@@ -73,14 +73,14 @@ var usersByName = allUsers.reduce(function (current, user) {
   return current
 }, {})
 
-function mockGetUser(id, callback) {
+function mockGetUser (id, callback) {
   callback(null, usersByName[id])
 }
 
-function mockGetUsersForGroup(group, callback) {
+function mockGetUsersForGroup (group, callback) {
   callback(null, users[group])
 }
 
-function mockGetAllManagers(callback) {
+function mockGetAllManagers (callback) {
   callback(null, users.managers)
 }

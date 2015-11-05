@@ -5,9 +5,9 @@ var groupNames
 var allUserGroup
 var managerGroup
 
-function getGroupNames(config) {
+function getGroupNames (config) {
   return Object.keys(config.roles).map(function (key) {
-    return config.roles[key];
+    return config.roles[key]
   })
 }
 
@@ -32,24 +32,24 @@ module.exports = function (ldapConfig) {
  * @param  {Function} callback Node style callback (err, data)
  * @return {[string]} a list of group names, eg: 'developers'
  */
-function getUserGroups(username, callback) {
-  ad.getGroupMembershipForUser({ attributes: ['cn'] }, username, function(err, groups) {
-    if (!groups)
+function getUserGroups (username, callback) {
+  ad.getGroupMembershipForUser({ attributes: ['cn'] }, username, function (err, groups) {
+    if (!groups) {
       groups = []
+    }
     callback(err, groups
-      .reduce(function(prev, group) { return prev.concat(group['cn']) }, [])
-      .filter(function(groupName) {
+      .reduce(function (prev, group) { return prev.concat(group['cn']) }, [])
+      .filter(function (groupName) {
         for (var i = 0; i < groupNames.length; i++) {
-          if (groupNames[i] === groupName)
-            return true
+          if (groupNames[i] === groupName) return true
         }
         return false
       }))
   })
 }
 
-function getUserEmail(username, callback) {
-  ad.findUser(username, function(error, data) {
+function getUserEmail (username, callback) {
+  ad.findUser(username, function (error, data) {
     callback(error, data ? data['mail'] : null)
   })
 }
