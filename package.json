@@ -4,6 +4,8 @@
   "description": "Wrapper for ActiveDirectory that gets the group for the username passed in through the x-iisnode-auth_user header",
   "main": "index.js",
   "scripts": {
+    "lint": "standard --verbose | snazzy",
+    "pretest": "npm run lint",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
@@ -15,5 +17,9 @@
   "license": "ISC",
   "dependencies": {
     "activedirectory": "^0.7.0"
+  },
+  "devDependencies": {
+    "snazzy": "^2.0.1",
+    "standard": "^5.3.1"
   }
 }
