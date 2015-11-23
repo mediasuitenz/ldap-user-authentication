@@ -22,7 +22,8 @@ module.exports = function (ldapConfig) {
     getAllUsers: function (callback) { ad.getUsersForGroup(allUserGroup, callback) },
     getUserEmail: getUserEmail,
     getUser: function (username, callback) { ad.findUser(username, callback) },
-    getAllManagers: function (callback) { ad.getUsersForGroup(managerGroup, callback) }
+    getAllManagers: function (callback) { ad.getUsersForGroup(managerGroup, callback) },
+    getUsersForGroup: function (group, callback) { ad.getUsersForGroup(group, callback) }
   }
 }
 
