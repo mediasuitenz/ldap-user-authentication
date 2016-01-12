@@ -4,6 +4,9 @@
   "description": "Wrapper for ActiveDirectory that gets the group for the username passed in through the x-iisnode-auth_user header",
   "main": "index.js",
   "scripts": {
+    "deploy:patch": "npm run test && node_modules/.bin/xyz -i patch",
+    "deploy:minor": "npm run test && node_modules/.bin/xyz -i minor",
+    "deploy:major": "npm run test && node_modules/.bin/xyz -i major",
     "lint": "standard --verbose | snazzy",
     "pretest": "npm run lint",
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -20,6 +23,7 @@
   },
   "devDependencies": {
     "snazzy": "^2.0.1",
-    "standard": "^5.3.1"
+    "standard": "^5.3.1",
+    "xyz": "^0.5.0"
   }
 }
